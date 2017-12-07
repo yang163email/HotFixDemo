@@ -1,0 +1,14 @@
+{
+  "AesKey": "",
+  "ClassFilterFilePath": "",
+  "KeyAlias": "",
+  "KeyPassword": "",
+  "KeyStorePassword": "",
+  "KeyStorePath": "",
+  "NewApkPath": "C:/Users/hasee/Desktop/app-debug-new.apk", //必填
+  "OldApkPath": "C:/Users/hasee/Desktop/app-debug-old.apk", //必填
+  "OutputDirPath": "C:/Users/hasee/Deskto/dir/",  //必填
+  "isForceColdFix": false,
+  "isIgnoreRes": false,
+  "isIgnoreSo": false
+}
