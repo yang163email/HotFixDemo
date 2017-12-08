@@ -1,23 +1,36 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
+
+// 依赖插件脚本
+apply from: 'tinker-support.gradle'
+// 多渠道使用walle示例（注：多渠道使用）
+apply from: 'multiple-channel.gradle'
 
 android {
     compileSdkVersion 26
+
     defaultConfig {
-        applicationId "com.yan.hotfix"
+        applicationId "com.yan.tinker"
         minSdkVersion 15
         targetSdkVersion 26
         versionCode 1
-        versionName "1.1"
+        versionName "1.0"
+
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         ndk {
             //设置支持的SO库架构
             abiFilters 'armeabi', 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
         }
+
+        // 开启multidex
+        multiDexEnabled true
+    }
+
+    // recommend
+    dexOptions {
+        jumboMode = true
     }
 
     // 签名配置
@@ -38,6 +51,11 @@ android {
         }
     }
 
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
     buildTypes {
         release {
             minifyEnabled true
@@ -52,22 +70,20 @@ android {
     }
 }
 
-repositories {
-    maven {
-        url "http://maven.aliyun.com/nexus/content/repositories/releases"
-    }
-}
-
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    //hotfix
-    compile 'com.aliyun.ams:alicloud-android-hotfix:3.1.7'
-    //anko
-    implementation 'org.jetbrains.anko:anko-commons:0.10.3'
+
+    compile "com.android.support:multidex:1.0.2" // 多dex配置
+    //注释掉原有bugly的仓库
+    //compile 'com.tencent.bugly:crashreport:latest.release'//其中latest.release指代最新版本号，也可以指定明确的版本号，例如2.3.2
+    compile 'com.tencent.bugly:crashreport_upgrade:latest.release'
+    compile 'com.tencent.bugly:nativecrashreport:latest.release' //其中latest.release指代最新版本号，也可以指定明确的版本号，例如2.2.0
+    //walle
+    compile 'com.meituan.android.walle:library:1.1.5'
 }

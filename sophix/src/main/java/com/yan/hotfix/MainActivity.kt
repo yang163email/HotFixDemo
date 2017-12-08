@@ -8,7 +8,6 @@ import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
-import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.toast
 
 class MainActivity : AppCompatActivity() {
@@ -22,8 +21,8 @@ class MainActivity : AppCompatActivity() {
             requestPermission()
         }
 
-        tv.text = "更新啦"
-        tv.textSize = 20f
+//        tv.text = "更新啦"
+//        tv.textSize = 20f
     }
 
     private val REQUEST_EXTERNAL_STORAGE_PERMISSION: Int = 2

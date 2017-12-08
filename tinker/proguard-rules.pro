@@ -19,18 +19,9 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+# Bugly混淆规则
+-dontwarn com.tencent.bugly.**
+-keep public class com.tencent.bugly.**{*;}
 
-#基线包使用，生成mapping.txt
--printmapping mapping.txt
-#生成的mapping.txt在app/buidl/outputs/mapping/release路径下，移动到/app路径下
-#修复后的项目使用，保证混淆结果一致
-#-applymapping mapping.txt
-#hotfix
--keep class com.taobao.sophix.**{*;}
--keep class com.ta.utdid2.device.**{*;}
-#防止inline
--dontoptimize
-
--keepclassmembers class com.my.pkg.MyRealApplication {
-    public <init>();
-}
+# 避免影响升级功能，需要keep住support包的类
+-keep class android.support.**{*;}

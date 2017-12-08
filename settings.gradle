@@ -1,1 +1,1 @@
-include ':sophix'
+include ':sophix', ':tinker'

@@ -14,7 +14,9 @@ class HotfixApp : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        initSophix()
+//        initSophix()
+        // queryAndLoadNewPatch不可放在attachBaseContext 中，否则无网络权限，建议放在后面任意时刻，如onCreate中
+        SophixManager.getInstance().queryAndLoadNewPatch()
     }
 
     private fun initSophix() {
@@ -47,7 +49,5 @@ class HotfixApp : Application() {
                         // 其它错误信息, 查看PatchStatus类说明
                     }
                 }.initialize()
-        // queryAndLoadNewPatch不可放在attachBaseContext 中，否则无网络权限，建议放在后面任意时刻，如onCreate中
-        SophixManager.getInstance().queryAndLoadNewPatch()
     }
 }
