@@ -3,6 +3,7 @@ package com.yan.tinker
 import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.orhanobut.logger.Logger
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
@@ -19,5 +20,7 @@ class MainActivity : AppCompatActivity() {
         tv_version.text = "${BuildConfig.VERSION_NAME}.${BuildConfig.VERSION_CODE}"
         tv_content.text = "bug第二次修复啦"
         tv_content.setTextColor(Color.RED)
+
+        Logger.e("logger", "hello")
     }
 }

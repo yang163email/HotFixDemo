@@ -1,8 +1,12 @@
 package com.yan.hotfix
 
 import android.app.Application
+import com.orhanobut.logger.AndroidLogAdapter
+import com.orhanobut.logger.Logger
 import com.taobao.sophix.PatchStatus
 import com.taobao.sophix.SophixManager
+
+
 
 /**
  *  @author      : 楠GG
@@ -17,6 +21,8 @@ class HotfixApp : Application() {
 //        initSophix()
         // queryAndLoadNewPatch不可放在attachBaseContext 中，否则无网络权限，建议放在后面任意时刻，如onCreate中
         SophixManager.getInstance().queryAndLoadNewPatch()
+
+        Logger.addLogAdapter(AndroidLogAdapter())
     }
 
     private fun initSophix() {

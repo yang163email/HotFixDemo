@@ -70,4 +70,6 @@ dependencies {
     compile 'com.aliyun.ams:alicloud-android-hotfix:3.1.7'
     //anko
     implementation 'org.jetbrains.anko:anko-commons:0.10.3'
+    //logger
+    compile 'com.orhanobut:logger:2.1.1'
 }

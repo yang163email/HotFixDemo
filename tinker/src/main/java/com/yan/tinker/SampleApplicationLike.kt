@@ -8,6 +8,8 @@ import android.os.Build
 import android.support.multidex.MultiDex
 import android.widget.Toast
 import com.meituan.android.walle.WalleChannelReader
+import com.orhanobut.logger.AndroidLogAdapter
+import com.orhanobut.logger.Logger
 import com.tencent.bugly.Bugly
 import com.tencent.bugly.beta.Beta
 import com.tencent.bugly.beta.interfaces.BetaPatchListener
@@ -32,6 +34,7 @@ class SampleApplicationLike(application: Application, tinkerFlags: Int,
         super.onCreate()
 
         initTinker()
+        Logger.addLogAdapter(AndroidLogAdapter())
     }
 
     private fun initTinker() {
